@@ -68,9 +68,9 @@ passport.deserializeUser(user.deserializeUser())
 //     res.send("hey, babe i am root")
 // });
 
-// app.get("/", (req, res) => {
-//   res.render("views/listings/home.ejs"); // make sure home.ejs exists
-// });
+app.get("/", (req, res) => {
+  res.render("listings/home"); // make sure home.ejs exists
+}); 
 
 // this is flash middleware
 app.use((req, res, next) => {
