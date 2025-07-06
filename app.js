@@ -64,9 +64,9 @@ passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser())
 
 
-app.get("/", (req, res) => {
-    res.send("hey, babe i am root")
-});
+// app.get("/", (req, res) => {
+//     res.send("hey, babe i am root")
+// });
 
 app.get("/", (req, res) => {
   res.render("home"); // make sure home.ejs exists
