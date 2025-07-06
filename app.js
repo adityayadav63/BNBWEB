@@ -39,16 +39,6 @@ store.on("error", () =>{
     
 })
 
-
-// this is flash middleware
-app.use((req, res, next) => {
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    res.locals.currUser = req.user;
-    next();
-});
-
-
 const sessionOption = {
     store,
     secret: process.env.SECRET,
@@ -74,15 +64,14 @@ passport.serializeUser(user.serializeUser());
 passport.deserializeUser(user.deserializeUser())
 
 
-// app.get("/", (req, res) => {
-//     res.send("hey, babe i am root")
-// });
 
-app.get("/", (req, res) => {
-  res.render("listings/home"); // make sure home.ejs exists
-}); 
-
-
+// this is flash middleware
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+});
 
 
 app.get("/demouser", async (req, res) => {
@@ -102,7 +91,7 @@ app.get("/demouser", async (req, res) => {
 
 
 
-// const MONGO_URL = "mongodb://127.0.0.1:27017/RENTRICH";
+
 
 
 
@@ -135,11 +124,6 @@ app.use("/listings", listingsRouter);
 app.use("/listings/:id/reviews", reviewsRouter);
 app.use("/", userRouter);
 
-// app.use((err,req,res,next) =>{
-//     console.log("err:", err)
-//     let {statusCode = 500,message = "do not get found!"} = Error;
-// res.status(statusCode).send(message);
-// })
 
 app.use((err, req, res, next) => {
     console.log("err:", err);
@@ -147,6 +131,9 @@ app.use((err, req, res, next) => {
     res.status(statusCode).send(message);
 });
 
+app.get("/", (req, res) => {
+  res.render("listings/home"); // make sure home.ejs exists
+}); 
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server started");
