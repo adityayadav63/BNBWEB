@@ -69,7 +69,7 @@ passport.deserializeUser(user.deserializeUser())
 // });
 
 app.get("/", (req, res) => {
-  res.render("/listings"); // make sure home.ejs exists
+  res.render("listings/home"); // make sure home.ejs exists
 }); 
 
 // this is flash middleware
