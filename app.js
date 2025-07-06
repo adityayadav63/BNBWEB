@@ -73,6 +73,9 @@ app.use((req, res, next) => {
     next();
 });
 
+app.get("/", (req, res) => {
+  res.render("listings/home"); // make sure home.ejs exists
+}); 
 
 app.get("/demouser", async (req, res) => {
     let FakeUser = new user({
@@ -131,9 +134,7 @@ app.use((err, req, res, next) => {
     res.status(statusCode).send(message);
 });
 
-app.get("/", (req, res) => {
-  res.render("listings/home"); // make sure home.ejs exists
-}); 
+
 
 app.listen(process.env.PORT || 3000, () => {
     console.log("Server started");
