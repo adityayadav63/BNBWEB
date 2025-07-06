@@ -15,7 +15,7 @@ const flash = require("connect-flash")
 const Review = require("./models/review.js"); // ← Confirm this
 const passport = require("passport");
 const Localstrategy = require("passport-local").Strategy
-const user = require("./models/user")
+const user = require("./models/user.js")
 
 
 
