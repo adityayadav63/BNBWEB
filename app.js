@@ -39,6 +39,16 @@ store.on("error", () =>{
     
 })
 
+
+// this is flash middleware
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    res.locals.currUser = req.user;
+    next();
+});
+
+
 const sessionOption = {
     store,
     secret: process.env.SECRET,
@@ -72,13 +82,7 @@ app.get("/", (req, res) => {
   res.render("listings/home"); // make sure home.ejs exists
 }); 
 
-// this is flash middleware
-app.use((req, res, next) => {
-    res.locals.success = req.flash("success");
-    res.locals.error = req.flash("error");
-    res.locals.currUser = req.user;
-    next();
-});
+
 
 
 app.get("/demouser", async (req, res) => {
