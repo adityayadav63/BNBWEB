@@ -68,6 +68,10 @@ app.get("/", (req, res) => {
     res.send("hey, babe i am root")
 });
 
+app.get("/", (req, res) => {
+  res.render("home"); // make sure home.ejs exists
+});
+
 // this is flash middleware
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
