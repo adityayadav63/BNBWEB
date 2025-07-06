@@ -69,7 +69,7 @@ passport.deserializeUser(user.deserializeUser())
 // });
 
 app.get("/", (req, res) => {
-  res.render("listings/home"); // make sure home.ejs exists
+  res.render("/listings"); // make sure home.ejs exists
 }); 
 
 // this is flash middleware
@@ -144,6 +144,6 @@ app.use((err, req, res, next) => {
 });
 
 
-app.listen(8080, () => {
-    console.log("ready for the connection to connect");
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Server started");
 });
