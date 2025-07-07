@@ -106,9 +106,9 @@
       </div>
 
       <div class="container pt-0 mt-0" style="margin-right: 6rem;">
-        <div class="row row-cols-lg-3 row-cols-md-1 row-cols-2 g-4 justify-content-center">
+        <div class="row row-cols-lg-3 row-cols-md-1 row-cols-2 g-4">
           <% for (let listing of allListings) { %>
-            <div class="col d-flex justify-content-center">
+            <div class="col">
               <a href="/listings/<%= listing._id %>" class="listing-link text-decoration-none">
                 <div class="card listing-card w-100" style="max-width: 25rem;">
                   <img src="<%= listing.image.url %>" class="card-img-top"
