@@ -11,7 +11,7 @@ module.exports.renderloggedinform =  (req, res) => {
 
 
 
-module.exports.signup = (async (req, res) => {
+module.exports.signup = (async (req, res, next) => {
         try {
             let { username, email, password } = req.body;
             const newuser = new User({ email, username });
@@ -20,7 +20,6 @@ module.exports.signup = (async (req, res) => {
             req.login(ragisteredUser, (err) => {
                 if (err) {
                     return next(err);
-
                 }
                 req.flash("success", "welcome to RENTRICH ")
                 res.redirect("/listings")

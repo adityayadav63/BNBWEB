@@ -18,15 +18,13 @@ router.param("id", (req, res, next, id) => {
 // index route
 router
    .route("/")
-   .get( wrapAsync(listingsController.index))
-   .post( 
+   .get(wrapAsync(listingsController.index))
+   .post(
     isloggedIn,
     upload.single('image'),
     validateListing,
-    wrapAsync(listingsController.createRenderform),(req,res) =>{
-    res.send(req.file)
-
-})
+    wrapAsync(listingsController.createRenderform)
+);
 
 // new route
 router.get(
