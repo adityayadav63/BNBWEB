@@ -1,0 +1,17 @@
+# Render blueprint to deploy this Node app on Render
+# More info: https://render.com/docs/render-yaml
+
+services:
+  - type: web
+    name: bnbweb
+    env: node
+    plan: free
+    branch: main
+    buildCommand: npm ci
+    startCommand: npm start
+    # Do NOT store secret values here. Add them in the Render dashboard under the service's Environment.
+    # The app uses dotenv, so typical env vars to add in Render:
+    # - MONGODB_URI (or DATABASE_URL)
+    # - CLOUDINARY_URL or CLOUDINARY_CLOUD_NAME/CLOUDINARY_API_KEY/CLOUDINARY_API_SECRET
+    # - SESSION_SECRET
+    # Render will automatically provide a PORT env var; the app should use process.env.PORT when binding.
