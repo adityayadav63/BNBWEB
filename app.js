@@ -2,6 +2,12 @@ if(process.env.NODE_ENV != "production") {
     require('dotenv').config()
 }
 
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
+
+console.log("SECRET LENGTH:", process.env.SECRET?.length);
+console.log("SECRET EXISTS:", !!process.env.SECRET);
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -28,9 +34,6 @@ const dburl =process.env.ATLASDB_URL;
 
 const store = MongoStore.create({
     mongoUrl:dburl,
-    crypto: {
-        secret: process.env.SECRET,
-    },
     touchAfter: 24 * 3600,
 });
 

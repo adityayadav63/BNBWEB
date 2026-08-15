@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: project-airbnb-web
+    env: node
+    region: oregon
+    branch: main
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: ATLASDB_URL
+        value: ""
+        sync: false
+      - key: SECRET
+        value: ""
+        sync: false
+      - key: CLOUD_NAME
+        value: ""
+        sync: false
+      - key: CLOUD_API
+        value: ""
+        sync: false
+      - key: CLOUD_API_SECRET
+        value: ""
+        sync: false
